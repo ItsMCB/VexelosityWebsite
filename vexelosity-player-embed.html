@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$.getJSON( "https://api.mcsrvstat.us/2/southhollow.us", function( data ) {
+  $.each( data, function( key, val ) {
+    if (key == "players") {
+        $("#playersAmount").text(val.online);
+        if (val.online > 1 || val.online == 0) {
+            $("#playerDisplay").text("players");
+        }
+        else {
+            $("#playerDisplay").text("player");
+        }
+    };
+  });
+});
+</script>
+</head>
+<body>
+
+<h2>There are <span id="playersAmount">?</span> <span id="playerDisplay"></span> online!</h2>
+
+</body>
+</html>
